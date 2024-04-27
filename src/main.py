@@ -98,4 +98,6 @@ class SimplePyPiCanonicalize(ETLGroup):
 
     @property
     def output_ids(self):
-        return ['latest_package', 'latest_requirement', 'latest_url']
+        return ['latest_package',
+                'latest_requirement',
+                'latest_url']

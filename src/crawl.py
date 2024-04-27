@@ -23,6 +23,9 @@ def process_latest(data: Dict) -> Dict:
 
 
 class LatestDownloader(ObjProcessor):
+    """
+    Crawl PyPi Instance that haven't been downloaded yet
+    """
     @property
     def input_ids(self):
         return ['name_trigger_new']
@@ -80,10 +83,8 @@ class LatestDownloader(ObjProcessor):
 
 class LatestUpdator(ObjProcessor):
     """
-    - [X] `Update` takes output of LatestDownloader as input and PyPiNameTrigger as input
-        - [X] Step 1: Load output cache and update the Json.
-        - [X] Step 2: append new json data to the updated cache.
-        - [X] Step 3: Save output.
+    Update PyPi Instances that have already been downloaded
+    and upsert them into the cached PyPi data.
     """
 
     def __init__(self, *args, **kwargs):
