@@ -9,6 +9,8 @@ etl_obj = SimplePyPiCanonicalize(
     partition_fs=DropboxBackend('/data/canon/partition/'),
     download_worker_count=8,
     update_worker_count=8,
-    test_count=100,
     do_update=True
 )
+
+if __name__ == '__main__':
+    etl_obj.execute()
