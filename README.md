@@ -14,6 +14,7 @@ Crawling Data From PyPi
     - [X] Follow the instruction step in the pop-up browser and Enter the dropbox_access_token obtained from the browser.
     - [X] A DROPBOX_REFRESH_TOKEN.ini file will be created. Make sure it is added into .gitignore
     - [X] Check that etl.yml is also be added into .github/workflows/
+- [X] Add `run_task.py` to Repo and connect it with the ETLGroup object.
 - [ ] Add the following secrets to the REPO
 
 ```yml

@@ -126,14 +126,14 @@ jobs:
   id_21:
     name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.Merge
     needs:
-    - id_28
-    - id_22
-    - id_29
-    - id_26
     - id_27
+    - id_26
+    - id_29
+    - id_24
+    - id_22
     - id_25
     - id_23
-    - id_24
+    - id_28
     secrets: inherit
     uses: ./.github/workflows/job.yml
     with:
@@ -206,9 +206,9 @@ jobs:
   id_3:
     name: <bound method ETLGroup._end of src-main-SimplePyPiCanonicalize-out-latest_package-latest_requirement-latest_url>
     needs:
-    - id_6
-    - id_8
     - id_7
+    - id_8
+    - id_6
     secrets: inherit
     uses: ./.github/workflows/job.yml
     with:
