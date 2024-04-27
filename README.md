@@ -1,6 +1,29 @@
 # pypi_rawdata
-Crawling Data From PyPi
 
+Crawling Data From PyPi and convert JSON into Tabular Data
+
+
+# Plan 
+
+1. [ ] Using pipdeptree to extract dependency message for each package
+
+```linux
+pipdeptree --warn silence --package pandas --json-tree >> output.json
+```
+
+2. [ ] Package identification Run flow: 
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+python3 -m pip install --upgrade pip
+python3 -m pip freeze >> $1.before.log
+python3 -m pip install $1
+python3 -m pip freeze >> $1.after.log
+pipdeptree --warn silence --package $1 --json-tree >> $1.json
+deactivate
+rm -r venv
+```
 
 # How to set up batchwise update framework? 
 
