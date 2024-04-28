@@ -29,7 +29,7 @@ def _get_dep(package_name: str) -> Dict:
         fl = open(f'./data/pipdeptree/{package_name}.json')
         pipdeptree = json.loads(fl.read())
     except json.decoder.JSONDecodeError:
-        return []
+        return None
     finally:
         pass
         # os.remove(f'./data/pipdeptree/{package_name}.json')
@@ -44,7 +44,10 @@ def process_latest(data: Dict) -> Dict:
     results['info'] = data['info']
     results['info']['num_releases'] = len(data['releases'])
     results['info']['pipdeptree'] = _get_dep(results['info']['name'])
-    results['info']['num_pip_dependencies'] = len(data['info']['pipdeptree'])
+    if data['info']['pipdeptree'] is not None:
+        results['info']['num_pip_dependencies'] = len(data['info']['pipdeptree'])
+    else:
+        results['info']['num_pip_dependencies'] = None
     if data['info']['requires_dist'] is not None:
         results['info']['num_info_dependencies'] = len(data['info']['requires_dist'])
     else:
