@@ -9,11 +9,40 @@ import vaex as vx
 import tqdm
 import time
 import json
+import os
 from concurrent.futures import ThreadPoolExecutor
 from batch_framework.etl import ObjProcessor
 
 RETRIES_COUNT = 3
 
+def get_dep(package_name: str) -> Dict:
+    """
+    Get dependency of a package
+    """
+    os.system('chmod +x ./src/get_dep.sh')
+    if not os.path.exists('./data/pipdeptree'):
+        os.mkdir('./data/pipdeptree')
+    os.system(f'./src/get_dep.sh {package_name}')
+    try:
+        fl = open(f'./data/pipdeptree/{package_name}.json')
+        pipdeptree = json.loads(fl.read())
+    except json.decoder.JSONDecodeError:
+        return []
+    finally:
+        os.remove(f'./data/pipdeptree/{package_name}.json')
+    pipdeptree = list(filter(lambda x: x['key'] == package_name, pipdeptree))[0]
+    dependencies = pipdeptree['dependencies']
+    dep_names = [x['key'] for x in dependencies]
+    print(f'{package_name} has requirements: \n{dep_names}')
+    return dependencies
+
+def convert_latest(data: Dict) -> str:
+    """
+    Convert and normalize latest data
+    """
+    package_name = data['info']['name']
+    data['pipdeptree'] = get_dep(package_name)
+    return json.dumps(data)
 
 def process_latest(data: Dict) -> Dict:
     results = dict()
@@ -42,7 +71,7 @@ class LatestDownloader(ObjProcessor):
         assert 'latest' in new_df.columns
         assert 'etag' in new_df.columns
         assert len(new_df.columns) == 3
-        new_df['latest'] = new_df['latest'].map(lambda x: json.dumps(x))
+        new_df['latest'] = new_df['latest'].map(convert_latest)
         return [new_df]
 
     def _get_new_package_records(self, names: List[str]) -> pd.DataFrame:
@@ -177,7 +206,7 @@ class LatestUpdator(ObjProcessor):
             update_pipe)
         new_df = pd.DataFrame.from_records(
             update_pipe, columns=['name', 'latest', 'etag'])
-        new_df['latest'] = new_df['latest'].map(lambda x: json.dumps(x))
+        new_df['latest'] = new_df['latest'].map(convert_latest)
         print(f'# of update in chunk ({partition}): {len(new_df)}')
         return new_df
 
