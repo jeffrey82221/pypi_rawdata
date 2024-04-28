@@ -15,13 +15,15 @@ from batch_framework.etl import ObjProcessor
 
 RETRIES_COUNT = 3
 
-def get_dep(package_name: str) -> Dict:
+def _get_dep(package_name: str) -> Dict:
     """
     Get dependency of a package
     """
     os.system('chmod +x ./src/get_dep.sh')
     if not os.path.exists('./data/pipdeptree'):
         os.mkdir('./data/pipdeptree')
+    if not os.path.exists('./venv'):
+        os.mkdir('./venv')
     os.system(f'./src/get_dep.sh {package_name}')
     try:
         fl = open(f'./data/pipdeptree/{package_name}.json')
@@ -36,18 +38,16 @@ def get_dep(package_name: str) -> Dict:
     print(f'{package_name} has requirements: \n{dep_names}')
     return dependencies
 
-def convert_latest(data: Dict) -> str:
-    """
-    Convert and normalize latest data
-    """
-    package_name = data['info']['name']
-    data['pipdeptree'] = get_dep(package_name)
-    return json.dumps(data)
-
 def process_latest(data: Dict) -> Dict:
     results = dict()
     results['info'] = data['info']
     results['info']['num_releases'] = len(data['releases'])
+    results['info']['pipdeptree'] = _get_dep(results['info']['name'])
+    results['info']['num_pip_dependencies'] = len(data['info']['pipdeptree'])
+    if data['info']['requires_dist'] is not None:
+        results['info']['num_info_dependencies'] = len(data['info']['requires_dist'])
+    else:
+        results['info']['num_info_dependencies'] = 0
     return results
 
 
@@ -71,7 +71,7 @@ class LatestDownloader(ObjProcessor):
         assert 'latest' in new_df.columns
         assert 'etag' in new_df.columns
         assert len(new_df.columns) == 3
-        new_df['latest'] = new_df['latest'].map(convert_latest)
+        new_df['latest'] = new_df['latest'].map(json.dumps)
         return [new_df]
 
     def _get_new_package_records(self, names: List[str]) -> pd.DataFrame:
@@ -206,7 +206,7 @@ class LatestUpdator(ObjProcessor):
             update_pipe)
         new_df = pd.DataFrame.from_records(
             update_pipe, columns=['name', 'latest', 'etag'])
-        new_df['latest'] = new_df['latest'].map(convert_latest)
+        new_df['latest'] = new_df['latest'].map(json.dumps)
         print(f'# of update in chunk ({partition}): {len(new_df)}')
         return new_df
 
