@@ -15,7 +15,7 @@ from batch_framework.etl import ObjProcessor
 
 RETRIES_COUNT = 3
 
-def _get_dep(package_name: str) -> Dict:
+def _get_dep(package_name: str, keep_cache: bool=True) -> Dict:
     """
     Get dependency of a package
     """
@@ -24,16 +24,17 @@ def _get_dep(package_name: str) -> Dict:
         os.mkdir('./data/pipdeptree')
     if not os.path.exists('./venv'):
         os.mkdir('./venv')
-    os.system(f'./src/get_dep.sh {package_name}')
+    if not os.path.exists(f'./data/pipdeptree/{package_name}.json'):
+        os.system(f'./src/get_dep.sh {package_name}')
     try:
         fl = open(f'./data/pipdeptree/{package_name}.json')
         pipdeptree = json.loads(fl.read())
-    except json.decoder.JSONDecodeError:
+        pipdeptree = list(filter(lambda x: x['key'] == package_name, pipdeptree))[0]
+    except (json.decoder.JSONDecodeError, IndexError):
         return None
     finally:
-        pass
-        # os.remove(f'./data/pipdeptree/{package_name}.json')
-    pipdeptree = list(filter(lambda x: x['key'] == package_name, pipdeptree))[0]
+        if not keep_cache:
+            os.remove(f'./data/pipdeptree/{package_name}.json')
     dependencies = pipdeptree['dependencies']
     dep_names = [x['key'] for x in dependencies]
     print(f'{package_name} has requirements: \n{dep_names}')
