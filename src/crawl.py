@@ -31,7 +31,8 @@ def _get_dep(package_name: str) -> Dict:
     except json.decoder.JSONDecodeError:
         return []
     finally:
-        os.remove(f'./data/pipdeptree/{package_name}.json')
+        pass
+        # os.remove(f'./data/pipdeptree/{package_name}.json')
     pipdeptree = list(filter(lambda x: x['key'] == package_name, pipdeptree))[0]
     dependencies = pipdeptree['dependencies']
     dep_names = [x['key'] for x in dependencies]
