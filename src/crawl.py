@@ -20,25 +20,22 @@ def _get_dep(package_name: str, keep_cache: bool=True) -> Dict:
     Get dependency of a package
     """
     os.system('chmod +x ./src/get_dep.sh')
+    json_file_path = f'./data/pipdeptree/{package_name}.json'
     if not os.path.exists('./data/pipdeptree'):
         os.mkdir('./data/pipdeptree')
-    if not os.path.exists('./venv'):
-        os.mkdir('./venv')
-    if not os.path.exists(f'./data/pipdeptree/{package_name}.json'):
+    if not os.path.exists(json_file_path):
         os.system(f'./src/get_dep.sh {package_name}')
     try:
-        fl = open(f'./data/pipdeptree/{package_name}.json')
-        pipdeptree = json.loads(fl.read())
-        pipdeptree = list(filter(lambda x: x['key'] == package_name, pipdeptree))[0]
-    except (json.decoder.JSONDecodeError, IndexError):
+        fl = open(json_file_path)
+        deps = json.loads(fl.read())['install']
+    except (FileNotFoundError, json.decoder.JSONDecodeError):
         return None
     finally:
         if not keep_cache:
-            os.remove(f'./data/pipdeptree/{package_name}.json')
-    dependencies = pipdeptree['dependencies']
-    dep_names = [x['key'] for x in dependencies]
+            os.remove(json_file_path)
+    dep_names = [x['metadata']['name'] for x in deps]
     print(f'{package_name} has requirements: \n{dep_names}')
-    return dependencies
+    return deps
 
 def process_latest(data: Dict) -> Dict:
     results = dict()
