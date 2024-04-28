@@ -34,7 +34,6 @@ def _get_dep(package_name: str, keep_cache: bool=True) -> Dict:
         if not keep_cache:
             os.remove(json_file_path)
     dep_names = [x['metadata']['name'] for x in deps]
-    print(f'{package_name} has requirements: \n{dep_names}')
     return deps
 
 def process_latest(data: Dict) -> Dict:
