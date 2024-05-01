@@ -18,12 +18,92 @@ jobs:
   id_10:
     name: name_trigger_new
     needs:
+    - id_112
     - id_0
-    - id_40
     runs-on: ubuntu-latest
     steps:
     - name: name_trigger_new
       run: echo name_trigger_new
+  id_100:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_29
+    needs:
+    - id_12
+    runs-on: ubuntu-latest
+    steps:
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_29
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_29
+  id_101:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_3
+    needs:
+    - id_12
+    runs-on: ubuntu-latest
+    steps:
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_3
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_3
+  id_102:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_30
+    needs:
+    - id_12
+    runs-on: ubuntu-latest
+    steps:
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_30
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_30
+  id_103:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_31
+    needs:
+    - id_12
+    runs-on: ubuntu-latest
+    steps:
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_31
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_31
+  id_104:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_4
+    needs:
+    - id_12
+    runs-on: ubuntu-latest
+    steps:
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_4
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_4
+  id_105:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_5
+    needs:
+    - id_12
+    runs-on: ubuntu-latest
+    steps:
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_5
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_5
+  id_106:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_6
+    needs:
+    - id_12
+    runs-on: ubuntu-latest
+    steps:
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_6
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_6
+  id_107:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_7
+    needs:
+    - id_12
+    runs-on: ubuntu-latest
+    steps:
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_7
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_7
+  id_108:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_8
+    needs:
+    - id_12
+    runs-on: ubuntu-latest
+    steps:
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_8
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_8
+  id_109:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_9
+    needs:
+    - id_12
+    runs-on: ubuntu-latest
+    steps:
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_9
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_9
   id_11:
     name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.AddPartitionKey
     needs:
@@ -33,10 +113,53 @@ jobs:
     with:
       task-id: id_11
       task-name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.AddPartitionKey
+  id_110:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_full
+    needs:
+    - id_11
+    runs-on: ubuntu-latest
+    steps:
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_full
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_full
+  id_111:
+    name: src-crawl-LatestUpdator-in-latest_new-out-latest
+    needs:
+    - id_5
+    secrets: inherit
+    uses: ./.github/workflows/job.yml
+    with:
+      task-id: id_111
+      task-name: src-crawl-LatestUpdator-in-latest_new-out-latest
+  id_112:
+    name: src-main-NewPackageExtractor-in-name_trigger-out-name_trigger_new
+    needs:
+    - id_9
+    secrets: inherit
+    uses: ./.github/workflows/job.yml
+    with:
+      task-id: id_112
+      task-name: src-main-NewPackageExtractor-in-name_trigger-out-name_trigger_new
+  id_113:
+    name: src-tabularize-LatestTabularize-in-latest-out-latest_package-latest_requirement-latest_url
+    needs:
+    - id_4
+    secrets: inherit
+    uses: ./.github/workflows/job.yml
+    with:
+      task-id: id_113
+      task-name: src-tabularize-LatestTabularize-in-latest-out-latest_package-latest_requirement-latest_url
+  id_114:
+    name: src-trigger-PyPiNameTrigger-out-name_trigger
+    needs: []
+    secrets: inherit
+    uses: ./.github/workflows/job.yml
+    with:
+      task-id: id_114
+      task-name: src-trigger-PyPiNameTrigger-out-name_trigger
   id_12:
     name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.Divide
     needs:
-    - id_38
+    - id_110
     secrets: inherit
     uses: ./.github/workflows/job.yml
     with:
@@ -45,7 +168,7 @@ jobs:
   id_13:
     name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.0
     needs:
-    - id_30
+    - id_78
     secrets: inherit
     uses: ./.github/workflows/job.yml
     with:
@@ -54,57 +177,57 @@ jobs:
   id_14:
     name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.1
     needs:
-    - id_31
+    - id_79
     secrets: inherit
     uses: ./.github/workflows/job.yml
     with:
       task-id: id_14
       task-name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.1
   id_15:
-    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.2
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.10
     needs:
-    - id_32
+    - id_80
     secrets: inherit
     uses: ./.github/workflows/job.yml
     with:
       task-id: id_15
-      task-name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.2
+      task-name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.10
   id_16:
-    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.3
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.11
     needs:
-    - id_33
+    - id_81
     secrets: inherit
     uses: ./.github/workflows/job.yml
     with:
       task-id: id_16
-      task-name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.3
+      task-name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.11
   id_17:
-    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.4
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.12
     needs:
-    - id_34
+    - id_82
     secrets: inherit
     uses: ./.github/workflows/job.yml
     with:
       task-id: id_17
-      task-name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.4
+      task-name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.12
   id_18:
-    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.5
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.13
     needs:
-    - id_35
+    - id_83
     secrets: inherit
     uses: ./.github/workflows/job.yml
     with:
       task-id: id_18
-      task-name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.5
+      task-name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.13
   id_19:
-    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.6
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.14
     needs:
-    - id_36
+    - id_84
     secrets: inherit
     uses: ./.github/workflows/job.yml
     with:
       task-id: id_19
-      task-name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.6
+      task-name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.14
   id_2:
     name: <bound method ETLGroup._end of batch_framework-parallize-MapReduce-in-name_trigger_new-out-latest_new>
     needs:
@@ -115,31 +238,290 @@ jobs:
       task-id: id_2
       task-name: <bound method ETLGroup._end of batch_framework-parallize-MapReduce-in-name_trigger_new-out-latest_new>
   id_20:
-    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.7
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.15
     needs:
-    - id_37
+    - id_85
     secrets: inherit
     uses: ./.github/workflows/job.yml
     with:
       task-id: id_20
-      task-name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.7
+      task-name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.15
   id_21:
-    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.Merge
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.16
     needs:
-    - id_26
-    - id_29
-    - id_25
-    - id_24
-    - id_22
-    - id_27
-    - id_28
-    - id_23
+    - id_86
     secrets: inherit
     uses: ./.github/workflows/job.yml
     with:
       task-id: id_21
-      task-name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.Merge
+      task-name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.16
   id_22:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.17
+    needs:
+    - id_87
+    secrets: inherit
+    uses: ./.github/workflows/job.yml
+    with:
+      task-id: id_22
+      task-name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.17
+  id_23:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.18
+    needs:
+    - id_88
+    secrets: inherit
+    uses: ./.github/workflows/job.yml
+    with:
+      task-id: id_23
+      task-name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.18
+  id_24:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.19
+    needs:
+    - id_89
+    secrets: inherit
+    uses: ./.github/workflows/job.yml
+    with:
+      task-id: id_24
+      task-name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.19
+  id_25:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.2
+    needs:
+    - id_90
+    secrets: inherit
+    uses: ./.github/workflows/job.yml
+    with:
+      task-id: id_25
+      task-name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.2
+  id_26:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.20
+    needs:
+    - id_91
+    secrets: inherit
+    uses: ./.github/workflows/job.yml
+    with:
+      task-id: id_26
+      task-name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.20
+  id_27:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.21
+    needs:
+    - id_92
+    secrets: inherit
+    uses: ./.github/workflows/job.yml
+    with:
+      task-id: id_27
+      task-name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.21
+  id_28:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.22
+    needs:
+    - id_93
+    secrets: inherit
+    uses: ./.github/workflows/job.yml
+    with:
+      task-id: id_28
+      task-name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.22
+  id_29:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.23
+    needs:
+    - id_94
+    secrets: inherit
+    uses: ./.github/workflows/job.yml
+    with:
+      task-id: id_29
+      task-name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.23
+  id_3:
+    name: <bound method ETLGroup._end of src-main-SimplePyPiCanonicalize-out-latest_package-latest_requirement-latest_url>
+    needs:
+    - id_6
+    - id_7
+    - id_8
+    secrets: inherit
+    uses: ./.github/workflows/job.yml
+    with:
+      task-id: id_3
+      task-name: <bound method ETLGroup._end of src-main-SimplePyPiCanonicalize-out-latest_package-latest_requirement-latest_url>
+  id_30:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.24
+    needs:
+    - id_95
+    secrets: inherit
+    uses: ./.github/workflows/job.yml
+    with:
+      task-id: id_30
+      task-name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.24
+  id_31:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.25
+    needs:
+    - id_96
+    secrets: inherit
+    uses: ./.github/workflows/job.yml
+    with:
+      task-id: id_31
+      task-name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.25
+  id_32:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.26
+    needs:
+    - id_97
+    secrets: inherit
+    uses: ./.github/workflows/job.yml
+    with:
+      task-id: id_32
+      task-name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.26
+  id_33:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.27
+    needs:
+    - id_98
+    secrets: inherit
+    uses: ./.github/workflows/job.yml
+    with:
+      task-id: id_33
+      task-name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.27
+  id_34:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.28
+    needs:
+    - id_99
+    secrets: inherit
+    uses: ./.github/workflows/job.yml
+    with:
+      task-id: id_34
+      task-name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.28
+  id_35:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.29
+    needs:
+    - id_100
+    secrets: inherit
+    uses: ./.github/workflows/job.yml
+    with:
+      task-id: id_35
+      task-name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.29
+  id_36:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.3
+    needs:
+    - id_101
+    secrets: inherit
+    uses: ./.github/workflows/job.yml
+    with:
+      task-id: id_36
+      task-name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.3
+  id_37:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.30
+    needs:
+    - id_102
+    secrets: inherit
+    uses: ./.github/workflows/job.yml
+    with:
+      task-id: id_37
+      task-name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.30
+  id_38:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.31
+    needs:
+    - id_103
+    secrets: inherit
+    uses: ./.github/workflows/job.yml
+    with:
+      task-id: id_38
+      task-name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.31
+  id_39:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.4
+    needs:
+    - id_104
+    secrets: inherit
+    uses: ./.github/workflows/job.yml
+    with:
+      task-id: id_39
+      task-name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.4
+  id_4:
+    name: latest
+    needs:
+    - id_111
+    runs-on: ubuntu-latest
+    steps:
+    - name: latest
+      run: echo latest
+  id_40:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.5
+    needs:
+    - id_105
+    secrets: inherit
+    uses: ./.github/workflows/job.yml
+    with:
+      task-id: id_40
+      task-name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.5
+  id_41:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.6
+    needs:
+    - id_106
+    secrets: inherit
+    uses: ./.github/workflows/job.yml
+    with:
+      task-id: id_41
+      task-name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.6
+  id_42:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.7
+    needs:
+    - id_107
+    secrets: inherit
+    uses: ./.github/workflows/job.yml
+    with:
+      task-id: id_42
+      task-name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.7
+  id_43:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.8
+    needs:
+    - id_108
+    secrets: inherit
+    uses: ./.github/workflows/job.yml
+    with:
+      task-id: id_43
+      task-name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.8
+  id_44:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.9
+    needs:
+    - id_109
+    secrets: inherit
+    uses: ./.github/workflows/job.yml
+    with:
+      task-id: id_44
+      task-name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.9
+  id_45:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.Merge
+    needs:
+    - id_70
+    - id_64
+    - id_59
+    - id_73
+    - id_49
+    - id_46
+    - id_61
+    - id_52
+    - id_60
+    - id_75
+    - id_51
+    - id_69
+    - id_62
+    - id_63
+    - id_54
+    - id_47
+    - id_57
+    - id_48
+    - id_72
+    - id_71
+    - id_66
+    - id_74
+    - id_65
+    - id_67
+    - id_50
+    - id_77
+    - id_76
+    - id_58
+    - id_56
+    - id_53
+    - id_55
+    - id_68
+    secrets: inherit
+    uses: ./.github/workflows/job.yml
+    with:
+      task-id: id_45
+      task-name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.Merge
+  id_46:
     name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_0
     needs:
     - id_13
@@ -147,7 +529,7 @@ jobs:
     steps:
     - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_0
       run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_0
-  id_23:
+  id_47:
     name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_1
     needs:
     - id_14
@@ -155,66 +537,271 @@ jobs:
     steps:
     - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_1
       run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_1
-  id_24:
-    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_2
+  id_48:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_10
     needs:
     - id_15
     runs-on: ubuntu-latest
     steps:
-    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_2
-      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_2
-  id_25:
-    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_3
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_10
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_10
+  id_49:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_11
     needs:
     - id_16
     runs-on: ubuntu-latest
     steps:
-    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_3
-      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_3
-  id_26:
-    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_4
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_11
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_11
+  id_5:
+    name: latest_new
+    needs:
+    - id_45
+    runs-on: ubuntu-latest
+    steps:
+    - name: latest_new
+      run: echo latest_new
+  id_50:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_12
     needs:
     - id_17
     runs-on: ubuntu-latest
     steps:
-    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_4
-      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_4
-  id_27:
-    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_5
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_12
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_12
+  id_51:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_13
     needs:
     - id_18
     runs-on: ubuntu-latest
     steps:
-    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_5
-      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_5
-  id_28:
-    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_6
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_13
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_13
+  id_52:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_14
     needs:
     - id_19
     runs-on: ubuntu-latest
     steps:
-    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_6
-      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_6
-  id_29:
-    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_7
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_14
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_14
+  id_53:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_15
     needs:
     - id_20
     runs-on: ubuntu-latest
     steps:
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_15
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_15
+  id_54:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_16
+    needs:
+    - id_21
+    runs-on: ubuntu-latest
+    steps:
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_16
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_16
+  id_55:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_17
+    needs:
+    - id_22
+    runs-on: ubuntu-latest
+    steps:
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_17
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_17
+  id_56:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_18
+    needs:
+    - id_23
+    runs-on: ubuntu-latest
+    steps:
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_18
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_18
+  id_57:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_19
+    needs:
+    - id_24
+    runs-on: ubuntu-latest
+    steps:
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_19
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_19
+  id_58:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_2
+    needs:
+    - id_25
+    runs-on: ubuntu-latest
+    steps:
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_2
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_2
+  id_59:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_20
+    needs:
+    - id_26
+    runs-on: ubuntu-latest
+    steps:
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_20
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_20
+  id_6:
+    name: latest_package
+    needs:
+    - id_113
+    runs-on: ubuntu-latest
+    steps:
+    - name: latest_package
+      run: echo latest_package
+  id_60:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_21
+    needs:
+    - id_27
+    runs-on: ubuntu-latest
+    steps:
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_21
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_21
+  id_61:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_22
+    needs:
+    - id_28
+    runs-on: ubuntu-latest
+    steps:
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_22
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_22
+  id_62:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_23
+    needs:
+    - id_29
+    runs-on: ubuntu-latest
+    steps:
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_23
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_23
+  id_63:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_24
+    needs:
+    - id_30
+    runs-on: ubuntu-latest
+    steps:
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_24
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_24
+  id_64:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_25
+    needs:
+    - id_31
+    runs-on: ubuntu-latest
+    steps:
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_25
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_25
+  id_65:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_26
+    needs:
+    - id_32
+    runs-on: ubuntu-latest
+    steps:
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_26
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_26
+  id_66:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_27
+    needs:
+    - id_33
+    runs-on: ubuntu-latest
+    steps:
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_27
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_27
+  id_67:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_28
+    needs:
+    - id_34
+    runs-on: ubuntu-latest
+    steps:
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_28
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_28
+  id_68:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_29
+    needs:
+    - id_35
+    runs-on: ubuntu-latest
+    steps:
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_29
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_29
+  id_69:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_3
+    needs:
+    - id_36
+    runs-on: ubuntu-latest
+    steps:
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_3
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_3
+  id_7:
+    name: latest_requirement
+    needs:
+    - id_113
+    runs-on: ubuntu-latest
+    steps:
+    - name: latest_requirement
+      run: echo latest_requirement
+  id_70:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_30
+    needs:
+    - id_37
+    runs-on: ubuntu-latest
+    steps:
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_30
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_30
+  id_71:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_31
+    needs:
+    - id_38
+    runs-on: ubuntu-latest
+    steps:
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_31
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_31
+  id_72:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_4
+    needs:
+    - id_39
+    runs-on: ubuntu-latest
+    steps:
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_4
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_4
+  id_73:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_5
+    needs:
+    - id_40
+    runs-on: ubuntu-latest
+    steps:
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_5
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_5
+  id_74:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_6
+    needs:
+    - id_41
+    runs-on: ubuntu-latest
+    steps:
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_6
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_6
+  id_75:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_7
+    needs:
+    - id_42
+    runs-on: ubuntu-latest
+    steps:
     - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_7
       run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_7
-  id_3:
-    name: <bound method ETLGroup._end of src-main-SimplePyPiCanonicalize-out-latest_package-latest_requirement-latest_url>
+  id_76:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_8
     needs:
-    - id_6
-    - id_8
-    - id_7
-    secrets: inherit
-    uses: ./.github/workflows/job.yml
-    with:
-      task-id: id_3
-      task-name: <bound method ETLGroup._end of src-main-SimplePyPiCanonicalize-out-latest_package-latest_requirement-latest_url>
-  id_30:
+    - id_43
+    runs-on: ubuntu-latest
+    steps:
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_8
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_8
+  id_77:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_9
+    needs:
+    - id_44
+    runs-on: ubuntu-latest
+    steps:
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_9
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_9
+  id_78:
     name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_0
     needs:
     - id_12
@@ -222,7 +809,7 @@ jobs:
     steps:
     - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_0
       run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_0
-  id_31:
+  id_79:
     name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_1
     needs:
     - id_12
@@ -230,7 +817,103 @@ jobs:
     steps:
     - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_1
       run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_1
-  id_32:
+  id_8:
+    name: latest_url
+    needs:
+    - id_113
+    runs-on: ubuntu-latest
+    steps:
+    - name: latest_url
+      run: echo latest_url
+  id_80:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_10
+    needs:
+    - id_12
+    runs-on: ubuntu-latest
+    steps:
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_10
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_10
+  id_81:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_11
+    needs:
+    - id_12
+    runs-on: ubuntu-latest
+    steps:
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_11
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_11
+  id_82:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_12
+    needs:
+    - id_12
+    runs-on: ubuntu-latest
+    steps:
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_12
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_12
+  id_83:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_13
+    needs:
+    - id_12
+    runs-on: ubuntu-latest
+    steps:
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_13
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_13
+  id_84:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_14
+    needs:
+    - id_12
+    runs-on: ubuntu-latest
+    steps:
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_14
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_14
+  id_85:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_15
+    needs:
+    - id_12
+    runs-on: ubuntu-latest
+    steps:
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_15
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_15
+  id_86:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_16
+    needs:
+    - id_12
+    runs-on: ubuntu-latest
+    steps:
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_16
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_16
+  id_87:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_17
+    needs:
+    - id_12
+    runs-on: ubuntu-latest
+    steps:
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_17
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_17
+  id_88:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_18
+    needs:
+    - id_12
+    runs-on: ubuntu-latest
+    steps:
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_18
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_18
+  id_89:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_19
+    needs:
+    - id_12
+    runs-on: ubuntu-latest
+    steps:
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_19
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_19
+  id_9:
+    name: name_trigger
+    needs:
+    - id_114
+    runs-on: ubuntu-latest
+    steps:
+    - name: name_trigger
+      run: echo name_trigger
+  id_90:
     name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_2
     needs:
     - id_12
@@ -238,137 +921,78 @@ jobs:
     steps:
     - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_2
       run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_2
-  id_33:
-    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_3
+  id_91:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_20
     needs:
     - id_12
     runs-on: ubuntu-latest
     steps:
-    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_3
-      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_3
-  id_34:
-    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_4
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_20
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_20
+  id_92:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_21
     needs:
     - id_12
     runs-on: ubuntu-latest
     steps:
-    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_4
-      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_4
-  id_35:
-    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_5
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_21
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_21
+  id_93:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_22
     needs:
     - id_12
     runs-on: ubuntu-latest
     steps:
-    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_5
-      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_5
-  id_36:
-    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_6
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_22
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_22
+  id_94:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_23
     needs:
     - id_12
     runs-on: ubuntu-latest
     steps:
-    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_6
-      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_6
-  id_37:
-    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_7
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_23
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_23
+  id_95:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_24
     needs:
     - id_12
     runs-on: ubuntu-latest
     steps:
-    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_7
-      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_7
-  id_38:
-    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_full
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_24
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_24
+  id_96:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_25
     needs:
-    - id_11
+    - id_12
     runs-on: ubuntu-latest
     steps:
-    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_full
-      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_full
-  id_39:
-    name: src-crawl-LatestUpdator-in-latest_new-out-latest
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_25
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_25
+  id_97:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_26
     needs:
-    - id_5
-    secrets: inherit
-    uses: ./.github/workflows/job.yml
-    with:
-      task-id: id_39
-      task-name: src-crawl-LatestUpdator-in-latest_new-out-latest
-  id_4:
-    name: latest
-    needs:
-    - id_39
+    - id_12
     runs-on: ubuntu-latest
     steps:
-    - name: latest
-      run: echo latest
-  id_40:
-    name: src-main-NewPackageExtractor-in-name_trigger-out-name_trigger_new
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_26
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_26
+  id_98:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_27
     needs:
-    - id_9
-    secrets: inherit
-    uses: ./.github/workflows/job.yml
-    with:
-      task-id: id_40
-      task-name: src-main-NewPackageExtractor-in-name_trigger-out-name_trigger_new
-  id_41:
-    name: src-tabularize-LatestTabularize-in-latest-out-latest_package-latest_requirement-latest_url
-    needs:
-    - id_4
-    secrets: inherit
-    uses: ./.github/workflows/job.yml
-    with:
-      task-id: id_41
-      task-name: src-tabularize-LatestTabularize-in-latest-out-latest_package-latest_requirement-latest_url
-  id_42:
-    name: src-trigger-PyPiNameTrigger-out-name_trigger
-    needs: []
-    secrets: inherit
-    uses: ./.github/workflows/job.yml
-    with:
-      task-id: id_42
-      task-name: src-trigger-PyPiNameTrigger-out-name_trigger
-  id_5:
-    name: latest_new
-    needs:
-    - id_21
+    - id_12
     runs-on: ubuntu-latest
     steps:
-    - name: latest_new
-      run: echo latest_new
-  id_6:
-    name: latest_package
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_27
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_27
+  id_99:
+    name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_28
     needs:
-    - id_41
+    - id_12
     runs-on: ubuntu-latest
     steps:
-    - name: latest_package
-      run: echo latest_package
-  id_7:
-    name: latest_requirement
-    needs:
-    - id_41
-    runs-on: ubuntu-latest
-    steps:
-    - name: latest_requirement
-      run: echo latest_requirement
-  id_8:
-    name: latest_url
-    needs:
-    - id_41
-    runs-on: ubuntu-latest
-    steps:
-    - name: latest_url
-      run: echo latest_url
-  id_9:
-    name: name_trigger
-    needs:
-    - id_42
-    runs-on: ubuntu-latest
-    steps:
-    - name: name_trigger
-      run: echo name_trigger
+    - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_28
+      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_28
 name: ETL
 'on':
   push:
