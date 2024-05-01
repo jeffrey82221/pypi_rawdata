@@ -32,7 +32,8 @@ def _get_dep(package_name: str, keep_cache: bool=False) -> Dict:
         return None
     finally:
         if not keep_cache:
-            os.remove(json_file_path)
+            if os.path.exists(json_file_path):
+                os.remove(json_file_path)
     return deps
 
 def process_latest(data: Dict) -> Dict:
