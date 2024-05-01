@@ -20,9 +20,9 @@ def _get_dep(package_name: str, keep_cache: bool=False) -> Dict:
     Get dependency of a package
     """
     os.system('chmod +x ./src/get_dep.sh')
-    json_file_path = f'./data/pipdeptree/{package_name}.json'
-    if not os.path.exists('./data/pipdeptree'):
-        os.mkdir('./data/pipdeptree')
+    json_file_path = f'./pipdeptree/{package_name}.json'
+    if not os.path.exists('./pipdeptree'):
+        os.mkdir('./pipdeptree')
     if not os.path.exists(json_file_path):
         os.system(f'./src/get_dep.sh {package_name}')
     try:
