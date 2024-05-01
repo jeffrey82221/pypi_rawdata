@@ -15,7 +15,7 @@ from batch_framework.etl import ObjProcessor
 
 RETRIES_COUNT = 3
 
-def _get_dep(package_name: str, keep_cache: bool=True) -> Dict:
+def _get_dep(package_name: str, keep_cache: bool=False) -> Dict:
     """
     Get dependency of a package
     """
@@ -33,22 +33,21 @@ def _get_dep(package_name: str, keep_cache: bool=True) -> Dict:
     finally:
         if not keep_cache:
             os.remove(json_file_path)
-    dep_names = [x['metadata']['name'] for x in deps]
     return deps
 
 def process_latest(data: Dict) -> Dict:
     results = dict()
     results['info'] = data['info']
     results['info']['num_releases'] = len(data['releases'])
+    if data['info']['requires_dist'] is not None:
+        results['info']['num_info_dependencies'] = len(data['info']['requires_dist'])
+    else:
+        results['info']['num_info_dependencies'] = 0
     results['info']['pipdeptree'] = _get_dep(results['info']['name'])
     if data['info']['pipdeptree'] is not None:
         results['info']['num_pip_dependencies'] = len(data['info']['pipdeptree'])
     else:
         results['info']['num_pip_dependencies'] = None
-    if data['info']['requires_dist'] is not None:
-        results['info']['num_info_dependencies'] = len(data['info']['requires_dist'])
-    else:
-        results['info']['num_info_dependencies'] = 0
     return results
 
 
