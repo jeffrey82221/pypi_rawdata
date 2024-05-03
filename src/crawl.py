@@ -9,46 +9,23 @@ import vaex as vx
 import tqdm
 import time
 import json
-import os
 from concurrent.futures import ThreadPoolExecutor
 from batch_framework.etl import ObjProcessor
+from .pip_util import enrich_requires_dist
 
 RETRIES_COUNT = 3
 
-def _get_dep(package_name: str, keep_cache: bool=False) -> Dict:
-    """
-    Get dependency of a package
-    """
-    os.system('chmod +x ./src/get_dep.sh')
-    json_file_path = f'./pipdeptree/{package_name}.json'
-    if not os.path.exists('./pipdeptree'):
-        os.mkdir('./pipdeptree')
-    if not os.path.exists(json_file_path):
-        os.system(f'./src/get_dep.sh {package_name}')
-    try:
-        fl = open(json_file_path)
-        deps = json.loads(fl.read())['install']
-    except (FileNotFoundError, json.decoder.JSONDecodeError):
-        return None
-    finally:
-        if not keep_cache:
-            if os.path.exists(json_file_path):
-                os.remove(json_file_path)
-    return deps
 
 def process_latest(data: Dict) -> Dict:
     results = dict()
     results['info'] = data['info']
-    results['info']['num_releases'] = len(data['releases'])
+    results['num_releases'] = len(data['releases'])
     if data['info']['requires_dist'] is not None:
-        results['info']['num_info_dependencies'] = len(data['info']['requires_dist'])
+        results['num_info_dependencies'] = len(data['info']['requires_dist'])
+        results['requires'] = enrich_requires_dist(data['info']['requires_dist'])
     else:
-        results['info']['num_info_dependencies'] = 0
-    results['info']['pipdeptree'] = _get_dep(results['info']['name'])
-    if data['info']['pipdeptree'] is not None:
-        results['info']['num_pip_dependencies'] = len(data['info']['pipdeptree'])
-    else:
-        results['info']['num_pip_dependencies'] = None
+        results['num_info_dependencies'] = 0
+        results['requires'] = None
     return results
 
 
