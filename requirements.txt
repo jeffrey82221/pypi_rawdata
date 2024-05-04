@@ -1,2 +1,3 @@
 batch-framework
 bs4
+pip==24.0
