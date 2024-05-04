@@ -17,7 +17,7 @@ def get_dist(dist_str) -> Tuple[str, List[str]]:
             if dists[version].matches_requirement(dist_str):
                 results.append(version)
         return (name, results)
-    except DistlibException:
+    except (DistlibException, SyntaxError):
         return (dist_str, None)
 
 def enrich_requires_dist(requires_dist: Optional[List[str]]) -> Dict[str, List[str]]:
