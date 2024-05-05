@@ -38,10 +38,8 @@ class NewPackageExtractor(ObjProcessor):
             print('Size of cached pkg_name:', len(pkg_name_cache_df))
             new_pkg_names = self._get_new_package_names(
                 pkg_name_df, pkg_name_cache_df)
-            print('number of new packages:', len(new_pkg_names))
-            # assert len(new_pkg_names) > 0, 'Should have new package'
-            if len(new_pkg_names) == 0:
-                new_pkg_names = pkg_name_cache_df.head(64)['name'].tolist()
+            print('Number of new packages:', len(new_pkg_names))
+            assert len(new_pkg_names) > 0, 'Should have new package'
             return [vx.from_pandas(pd.DataFrame(
                 new_pkg_names, columns=['name']))]
         else:
@@ -54,6 +52,7 @@ class NewPackageExtractor(ObjProcessor):
             0]
         new_names = list(set(pkg_names) - set(cache_pkg_names))
         return new_names
+
 
 
 class SimplePyPiCanonicalize(ETLGroup):

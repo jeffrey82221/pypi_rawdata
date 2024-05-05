@@ -119,6 +119,7 @@ class LatestUpdator(ObjProcessor):
                 # 1. load cached name and etag
                 latest_cache = self.load_cache(self.output_ids[0])[
                     'name', 'etag'].to_pandas_df()
+                print('LatestUpdator loaded cache size:', len(latest_cache))
                 # 2. update latest_cache based on name and etag pandas
                 # dataframe
                 latest_cache['partition'] = latest_cache.index.map(
@@ -138,8 +139,10 @@ class LatestUpdator(ObjProcessor):
                     self.load_cache(self.output_ids[0])
                 ]).to_pandas_df()
                 # 4. Do dedupe operation on combined vaex dataframe
+                print('LatestUpdator size after update & current appended:', len(latest))
                 latest.drop_duplicates(
                     subset=['name'], keep='first', inplace=True)
+                print('LatestUpdator size after duplicated dropped:', len(latest))
                 return [vx.from_pandas(latest)]
             else:
                 latest = vx.concat([
