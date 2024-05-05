@@ -60,14 +60,15 @@ class LatestTabularize(ObjProcessor):
             'requires_python': record['latest']['info']['requires_python'],
             'version': record['latest']['info']['version'],
             'keywords': record['latest']['info']['keywords'],
-            'num_releases': record['latest']['info']['num_releases'],
             'author': record['latest']['info']['author'],
             'author_email': record['latest']['info']['author_email'],
             'maintainer': record['latest']['info']['maintainer'],
             'maintainer_email': record['latest']['info']['maintainer_email'],
             'license': record['latest']['info']['license'],
             'docs_url': record['latest']['info']['docs_url'],
-            'home_page': record['latest']['info']['home_page']
+            'home_page': record['latest']['info']['home_page'],
+            'num_releases': record['latest']['num_releases'],
+            'num_requires_dist': record['latest']['num_info_dependencies']
         }
 
     @staticmethod
@@ -81,14 +82,27 @@ class LatestTabularize(ObjProcessor):
         Returns:
             List[Dict]:  List of the simplified dictionary that is not nested
         """
-        data = record['latest']['info']['requires_dist']
+        data = record['latest']['requires']
         if data is not None:
-            return [
-                {
+            results = []
+            for req_name in data:
+                num_match_dist = len(data[req_name]['releases'])
+                if num_match_dist:
+                    newest_dist = max(data[req_name]['releases'])
+                    oldest_dist = min(data[req_name]['releases'])
+                else:
+                    newest_dist = None
+                    oldest_dist = None
+                result = {
                     'pkg_name': record['name'],
-                    'requirement': e
-                } for e in data
-            ]
+                    'required_pkg_name': req_name,
+                    'num_match_dist': num_match_dist,
+                    'requirement_string': data[req_name]['requirement'],
+                    'newest_dist': newest_dist,
+                    'oldest_dist': oldest_dist
+                }
+                results.append(result)
+            return results
         else:
             return []
 
