@@ -5,30 +5,13 @@ Crawling Data From PyPi and convert JSON into Tabular Data
 
 # Plan 
 
-1. [ ] Using pipdeptree to extract dependency message for each package
+1. [-] Using pip package to identify package name from `requires_dist` of pypi json file.
 
-```linux
-pipdeptree --warn silence --package pandas --json-tree >> output.json
+```
+from pip._vendor.distlib.util import parse_requirement
 ```
 
-2. [ ] Package identification Run flow: 
-
-```bash
-python3 -m venv $1
-source $1/bin/activate
-python3 -m pip install --upgrade pip
-python3 -m pip install pipdeptree
-python3 -m pip freeze >> $1.before.log
-python3 -m pip install $1
-python3 -m pip freeze >> $1.after.log
-pipdeptree --warn silence --package $1 --json-tree >> $1.json
-deactivate
-rm -r $1
-```
-
-3. [ ] Using tmux interface of python to enable multiple venv operation
-
-REF: libtmux
+2. [X] Obtain more requirement information including max/min versions, number of release versions, etc.
 
 # How to set up batchwise update framework? 
 
