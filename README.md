@@ -5,7 +5,7 @@ Crawling Data From PyPi and convert JSON into Tabular Data
 
 # Plan 
 
-1. [-] Using pip package to identify package name from `requires_dist` of pypi json file.
+1. [X] Using pip package to identify package name from `requires_dist` of pypi json file.
 
 ```
 from pip._vendor.distlib.util import parse_requirement
