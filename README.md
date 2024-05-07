@@ -33,3 +33,18 @@ from pip._vendor.distlib.util import parse_requirement
     DROPBOX_APP_SECRET: ${{ secrets.DROPBOX_APP_SECRET }}
     DROPBOX_REFRESH_TOKEN: ${{ secrets.DROPBOX_REFRESH_TOKEN }}
 ```
+
+# Setup Airflow:
+
+REF: https://medium.com/@parklaus1078/airflow-installation-on-mac-811d60d7ed40
+
+- [ ] Install Docker Desktop on Mac
+- [ ] Install airflow docker compose yml using `curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.9.1/docker-compose.yaml'`
+- [ ] Setup airflow folders with following script:
+```bash
+mkdir -p ./dags ./logs ./plugins ./config
+echo -e "AIRFLOW_UID=$(id -u)" > .env
+```
+- [ ] Initialize airflow using: `docker compose up airflow-init`
+- [ ] Change docker-compose.yaml port of webserver from '8080:8080' to '50309:8080'
+
