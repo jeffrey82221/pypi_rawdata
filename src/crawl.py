@@ -112,8 +112,9 @@ class LatestUpdator(ObjProcessor):
 
     def transform(self, inputs: List[vx.DataFrame],
                   **kwargs) -> List[vx.DataFrame]:
+        latest_new = inputs[0]
         if not self.exists_cache:
-            return [inputs[0]]
+            return [latest_new]
         else:
             if self._do_update:
                 # 1. load cached name and etag
@@ -134,19 +135,19 @@ class LatestUpdator(ObjProcessor):
                 # (vx)
                 latest = vx.concat([
                     vx.from_pandas(updated_latest),
-                    inputs[0],
+                    latest_new,
                     # select those not in updated_latest
                     self.load_cache(self.output_ids[0])
                 ]).to_pandas_df()
                 # 4. Do dedupe operation on combined vaex dataframe
-                print('LatestUpdator size after update & current appended:', len(latest))
+                print('LatestUpdator output size after update & current appended:', len(latest))
                 latest.drop_duplicates(
                     subset=['name'], keep='first', inplace=True)
-                print('LatestUpdator size after duplicated dropped:', len(latest))
+                print('LatestUpdator output size after duplicated dropped:', len(latest))
                 return [vx.from_pandas(latest)]
             else:
                 latest = vx.concat([
-                    inputs[0],
+                    latest_new,
                     self.load_cache(self.output_ids[0])
                 ])
                 return [latest]

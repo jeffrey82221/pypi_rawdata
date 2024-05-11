@@ -56,10 +56,11 @@ class NewPackageExtractor(ObjProcessor):
 
 
 class SimplePyPiCanonicalize(ETLGroup):
-    def __init__(self, raw_df: LocalBackend,
+    def __init__(self, 
                  tmp_fs: LocalBackend,
-                 output_fs: LocalBackend,
                  partition_fs: LocalBackend,
+                 raw_df: LocalBackend,
+                 output_fs: LocalBackend,
                  download_worker_count: int = 1,
                  update_worker_count: int = 16,
                  test_count: Optional[int] = None,

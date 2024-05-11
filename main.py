@@ -7,19 +7,70 @@ worker=16 with count 8192 => 10 min ~ 10 MB / s
 worker=64 with count 8192 => 5 min ~ 20 MB / s
 
 => Best number of worker=32 
+
+TODO: Setup First Run and Migrade to the Cloud 
+
+- [X] Build first Run python file
+- [ ] Build migrate data python file 
+- [ ] Build incremental run python file
+- [ ] Build incremental run etl.yml
 """
 from src import SimplePyPiCanonicalize
 from batch_framework.filesystem import DropboxBackend
-etl_obj = SimplePyPiCanonicalize(
-    raw_df=DropboxBackend('/data/canon/raw/'),
-    tmp_fs=DropboxBackend('/data/canon/tmp/'),
-    output_fs=DropboxBackend('/data/canon/output/'),
-    partition_fs=DropboxBackend('/data/canon/partition/'),
-    download_worker_count=1, # FIRST RUN: 64,
-    update_worker_count=1,
-    # test_count=8192,
-    do_update=True
-)
+from batch_framework.filesystem import LocalBackend
+
+def get_etl_obj(mode='incremental', local=False, test_count=64):
+    assert mode in ['test', 'first_run', 'incremental']
+    if mode in ['first_run', 'test']:
+        assert local, 'must run first_run or test locally'
+    if not local:
+        assert mode == 'incremental'
+        etl_obj = SimplePyPiCanonicalize(
+            tmp_fs=DropboxBackend('/data/canon/tmp/'),
+            partition_fs=DropboxBackend('/data/canon/partition/'),
+            raw_df=DropboxBackend('/data/canon/raw/'),
+            output_fs=DropboxBackend('/data/canon/output/'),
+            download_worker_count=1,
+            update_worker_count=64,
+            do_update=True
+        )
+    else:
+        if mode == 'test':
+            etl_obj = SimplePyPiCanonicalize(
+                tmp_fs=LocalBackend('data/canon/tmp/'),
+                partition_fs=LocalBackend('data/canon/partition/'),
+                raw_df=LocalBackend('data/canon/raw/'),
+                output_fs=DropboxBackend('/data/canon/output/'),
+                download_worker_count=8, # FIRST RUN: 64,
+                update_worker_count=8,
+                test_count=test_count,
+                do_update=True
+            )
+        elif mode == 'first_run':
+            etl_obj = SimplePyPiCanonicalize(
+                tmp_fs=LocalBackend('data/canon/tmp/'),
+                partition_fs=LocalBackend('data/canon/partition/'),
+                raw_df=LocalBackend('data/canon/raw/'),
+                output_fs=DropboxBackend('/data/canon/output/'),
+                download_worker_count=64, # FIRST RUN: 64,
+                update_worker_count=64,
+                do_update=False
+            )
+        elif mode == 'incremental':
+            etl_obj = SimplePyPiCanonicalize(
+                tmp_fs=LocalBackend('data/canon/tmp/'),
+                partition_fs=LocalBackend('data/canon/partition/'),
+                raw_df=LocalBackend('data/canon/raw/'),
+                output_fs=DropboxBackend('/data/canon/output/'),
+                download_worker_count=64,
+                update_worker_count=64,
+                do_update=True
+            )
+    return etl_obj
+
 if __name__ == '__main__':
-    etl_obj.execute()
+    # get_etl_obj(mode='debug', local=True).execute()
+    # get_etl_obj(mode='first_run', local=True).execute()
+    get_etl_obj(mode='incremental', local=True).execute()
+    
     

@@ -21,106 +21,34 @@ from pip._vendor.distlib.util import parse_requirement
 - [X] Create src/ with classes inheriting batch_framework ETLBase
 - [X] Add template.yml and build_yml.py into Repo
 - [X] Connect the ETLGroup object of src/ to GithubActionAdaptor in build_yml.py
+
+# How to initialize the Data First Time ?
+
+- [ ] Using `LocalBackend` in main.py to locally store and run the data flow.
+    - [ ] First Run:
+        - [ ] Make sure small `test_count` works.
+        - [ ] Set up large `download_worker_count` and remove `test_count` to download all data and process them fast.
+    - [ ] Second run:
+        - [ ] Set up large `update_worker_count` and update the data fast.
+
+
+# How to setup day 2 data flow in github action?
+
+- [ ] Migrade all data to DropBox using `migrade.py`
 - [X] Run build_yml.py 
     - [X] Follow the instruction step in the pop-up browser and Enter the dropbox_access_token obtained from the browser.
     - [X] A DROPBOX_REFRESH_TOKEN.ini file will be created. Make sure it is added into .gitignore
     - [X] Check that etl.yml is also be added into .github/workflows/
 - [X] Add `run_task.py` to Repo and connect it with the ETLGroup object.
-- [X] Add the following secrets to the REPO
+- [X] Add the following secrets to the github REPO
 
 ```yml
     DROPBOX_APP_KEY: ${{ secrets.DROPBOX_APP_KEY }}
     DROPBOX_APP_SECRET: ${{ secrets.DROPBOX_APP_SECRET }}
     DROPBOX_REFRESH_TOKEN: ${{ secrets.DROPBOX_REFRESH_TOKEN }}
 ```
-
-# Setup PostgresDB:
-
-1) Docker Pull Postgres:
-
-`docker pull postgres`
-
-2) Create Persistent Volumn for Postgres:
-
-`docker volume create postgres-data`
-
-3) Create Postgres Container:
-
-`docker run --name postgres-container -e POSTGRES_PASSWORD=password -p 5432:5432 -v postgres-data:/var/lib/postgresql/data -d postgres`
-
-4) Access Postgres DB:
-
-`docker exec -it postgres-container psql -U postgres`
-
-5) Setup Airflow DB in Postgres
-
-```bash
-CREATE DATABASE airflow_db;
-CREATE USER airflow_user WITH PASSWORD 'airflow_pass';
-GRANT ALL PRIVILEGES ON DATABASE airflow_db TO airflow_user;
-```
-
-# Setup Airflow:
-
-4) Build Airflow Environment: 
-
-`/usr/local/opt/python@3.7/bin/python3 -m venv airflow_env`
-
-5) Start Airflow Environment:
-  
-`source airflow_env/bin/activate`
-`pip install --upgrade pip`
-
-3) Install Neccessary Packages:
-
-`pip install apache-airflow`
-`pip install apache-airflow-providers-celery`
-`pip install psycopg2`
-
-4) Initialize Airflow DB
-
-`airflow db init`
-
-5) Go to airflow directory at the Home Directory
-
-`cd [Home Directory]/airflow`
-
-6) Config Airflow: 
-
-Go to ~/airflow
-
-Change airflow.cfg
-
-* change `dags_folder` to the directory where dags.py are located
-* change `sql_alchemy_conn` to `postgresql+psycopg2://airflow_user:airflow_pass@localhost/airflow_db`
-* change `executor` to CeleryExecutor
-
-
-7) Run againt db init
-
-`airflow db init`
-
-7) Add User to airflow: 
-
-`airflow users create --username jeffrey --password password --firstname jeffrey --lastname lin --role Admin --email jeffrey82221@icloud.com`
-
-`airflow users list`
-
-8) Start airflow scheduler 
-
-`airflow scheduler`
-
-9) Start a new terminal and start the webserver: 
-
-`source airflow_env/bin/activate`
-
-`airflow webserver`
-
-9) Go to the browser and search http://localhost:8080/home
-
-username: admin 
-password: password
-
-
-
+- [ ] Locally Test the Dropbox works for the data flow
+    - [ ] Change all `LocalBackend` to `DropboxBackend`
+    - [ ] git push the `etl.yml` generated to Github.
+    - [ ] Check if the Github Action run succesfully.
 

@@ -86,21 +86,31 @@ class LatestTabularize(ObjProcessor):
         if data is not None:
             results = []
             for req_name in data:
-                num_match_dist = len(data[req_name]['releases'])
-                if num_match_dist:
-                    newest_dist = max(data[req_name]['releases'])
-                    oldest_dist = min(data[req_name]['releases'])
-                else:
-                    newest_dist = None
-                    oldest_dist = None
-                result = {
-                    'pkg_name': record['name'],
-                    'required_pkg_name': req_name,
-                    'num_match_dist': num_match_dist,
-                    'requirement_string': data[req_name]['requirement'],
-                    'newest_dist': newest_dist,
-                    'oldest_dist': oldest_dist
-                }
+                if data[req_name] is None:
+                    result = {
+                        'pkg_name': record['name'],
+                        'required_pkg_name': req_name,
+                        'num_match_dist': 0,
+                        'requirement_string': req_name,
+                        'newest_dist': None,
+                        'oldest_dist': None
+                    }
+                else:    
+                    num_match_dist = len(data[req_name]['releases'])
+                    if num_match_dist:
+                        newest_dist = max(data[req_name]['releases'])
+                        oldest_dist = min(data[req_name]['releases'])
+                    else:
+                        newest_dist = None
+                        oldest_dist = None
+                    result = {
+                        'pkg_name': record['name'],
+                        'required_pkg_name': req_name,
+                        'num_match_dist': num_match_dist,
+                        'requirement_string': data[req_name]['requirement'],
+                        'newest_dist': newest_dist,
+                        'oldest_dist': oldest_dist
+                    }
                 results.append(result)
             return results
         else:
