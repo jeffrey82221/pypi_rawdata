@@ -75,7 +75,10 @@ class NewDropboxBackend(DropboxBackend):
             input_pipe = range(total_size)
             input_pipe = map(lambda x: (dfs, x, ext), input_pipe)
             chunks = executor.map(self._download_chunk, input_pipe)
-            chunks = list(tqdm.tqdm(chunks, desc=f'Download {remote_path}'))
+            chunks = list(tqdm.tqdm(chunks, 
+                                    desc=f'Download {remote_path}',
+                                    total=total_size
+                                    ))
             with SplitFileReader(chunks) as sfw:
                 result = io.BytesIO(sfw.read())
             result.seek(0)
