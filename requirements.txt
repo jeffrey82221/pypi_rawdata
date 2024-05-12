@@ -1,3 +1,4 @@
 batch-framework
 bs4
 pip==24.0
+split_file_reader
