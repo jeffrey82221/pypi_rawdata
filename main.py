@@ -11,8 +11,8 @@ worker=64 with count 8192 => 5 min ~ 20 MB / s
 TODO: Setup First Run and Migrade to the Cloud 
 
 - [X] Build first Run python file
-- [ ] Build migrate data python file 
-- [ ] Build incremental run python file
+- [X] Build migrate data python file 
+- [X] Build incremental run python file
 - [ ] Build incremental run etl.yml
 """
 from src import SimplePyPiCanonicalize
@@ -86,5 +86,5 @@ if __name__ == '__main__':
     # get_etl_obj(mode='debug', local=True).execute()
     # get_etl_obj(mode='first_run', local=True).execute()
     # get_etl_obj(mode='incremental', local=True).execute()
-    migrate_data()
-    # get_etl_obj(mode='incremental', local=False).execute()
+    # migrate_data()
+    get_etl_obj(mode='incremental', local=False).execute()
