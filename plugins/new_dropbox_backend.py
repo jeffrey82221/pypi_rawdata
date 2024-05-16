@@ -1,3 +1,4 @@
+import os
 import io
 from fsspec.implementations.dirfs import DirFileSystem
 import tqdm
@@ -31,17 +32,18 @@ class NewDropboxBackend(DropboxBackend):
             while True:
                 lst.append(io.BytesIO())
                 yield lst[-1]
-        
         file_obj.seek(0)
         with SplitFileWriter(gen(chunks), 1000000) as sfw:
             sfw.write(file_obj.getbuffer())
-        total_size = len(chunks)
-        print('number of chunks:', total_size)
+        # total_size = len(chunks)
+        # print('number of chunks:', total_size)
         with ThreadPoolExecutor(max_workers=8) as executor:
             input_pipe = enumerate(chunks)
             input_pipe = map(lambda x: (dfs, x[0], ext, x[1]), input_pipe)
             output_pipe = executor.map(self._upload_chunk, input_pipe)
-            _ = list(tqdm.tqdm(output_pipe, desc=f'Upload {remote_path}', total=total_size))
+            output = list(tqdm.tqdm(output_pipe, desc=f'Upload {remote_path}'))
+        total_size = len(output)
+        print('number of chunks:', total_size)
         with dfs.open('total.txt', 'w') as f:
             f.write(str(total_size))
         print(f'Done upload {total_size} files')
