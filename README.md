@@ -2,17 +2,6 @@
 
 Crawling Data From PyPi and convert JSON into Tabular Data
 
-
-# Plan 
-
-1. [X] Using pip package to identify package name from `requires_dist` of pypi json file.
-
-```
-from pip._vendor.distlib.util import parse_requirement
-```
-
-2. [X] Obtain more requirement information including max/min versions, number of release versions, etc.
-
 # How to set up batchwise update framework? 
 
 - [X] Add .github/workflows/job.yml into the Repo
@@ -24,21 +13,25 @@ from pip._vendor.distlib.util import parse_requirement
 
 # How to initialize the Data First Time ?
 
-- [ ] Using `LocalBackend` in main.py to locally store and run the data flow.
-    - [ ] First Run:
-        - [ ] Make sure small `test_count` works.
-        - [ ] Set up large `download_worker_count` and remove `test_count` to download all data and process them fast.
-    - [ ] Second run:
-        - [ ] Set up large `update_worker_count` and update the data fast.
+- [X] Using `LocalBackend` in main.py to locally store and run the data flow.
+    - [X] First Run:
+        - [X] Make sure small `test_count` works.
+        - [X] Set up large `download_worker_count` and remove `test_count` to download all data and process them fast.
+    - [X] Second run:
+        - [X] Set up large `update_worker_count` and update the data fast.
 
 
 # How to setup day 2 data flow in github action?
 
-- [ ] Migrade all data to DropBox using `migrade.py`
-- [X] Run build_yml.py 
-    - [X] Follow the instruction step in the pop-up browser and Enter the dropbox_access_token obtained from the browser.
-    - [X] A DROPBOX_REFRESH_TOKEN.ini file will be created. Make sure it is added into .gitignore
-    - [X] Check that etl.yml is also be added into .github/workflows/
+- [X] Migrade all data to DropBox using `migrade_data` function in main.py
+- [X] Locally Test the Dropbox works for the data flow
+    - [X] Change all `LocalBackend` to `DropboxBackend`
+    - [X] git push the `etl.yml` generated to Github.
+    - [X] Check if the Github Action run succesfully.
+- [ ] Run build_yml.py 
+    - [ ] Follow the instruction step in the pop-up browser and Enter the dropbox_access_token obtained from the browser.
+    - [ ] A DROPBOX_REFRESH_TOKEN.ini file will be created. Make sure it is added into .gitignore
+    - [ ] Check that etl.yml is also be added into .github/workflows/
 - [X] Add `run_task.py` to Repo and connect it with the ETLGroup object.
 - [X] Add the following secrets to the github REPO
 
@@ -47,8 +40,12 @@ from pip._vendor.distlib.util import parse_requirement
     DROPBOX_APP_SECRET: ${{ secrets.DROPBOX_APP_SECRET }}
     DROPBOX_REFRESH_TOKEN: ${{ secrets.DROPBOX_REFRESH_TOKEN }}
 ```
-- [ ] Locally Test the Dropbox works for the data flow
-    - [ ] Change all `LocalBackend` to `DropboxBackend`
-    - [ ] git push the `etl.yml` generated to Github.
-    - [ ] Check if the Github Action run succesfully.
+# New Features:
 
+1. [X] Using pip package to identify package name from `requires_dist` of pypi json file.
+
+```
+from pip._vendor.distlib.util import parse_requirement
+```
+
+2. [X] Obtain more requirement information including max/min versions, number of release versions, etc.
