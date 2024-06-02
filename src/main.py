@@ -13,7 +13,6 @@ from .crawl import (
     LatestDownloader,
     LatestUpdator
 )
-from .tabularize import LatestTabularize
 
 
 class NewPackageExtractor(ObjProcessor):
@@ -60,7 +59,6 @@ class SimplePyPiCanonicalize(ETLGroup):
                  tmp_fs: LocalBackend,
                  partition_fs: LocalBackend,
                  raw_df: LocalBackend,
-                 output_fs: LocalBackend,
                  download_worker_count: int = 1,
                  update_worker_count: int = 16,
                  test_count: Optional[int] = None,
@@ -84,12 +82,6 @@ class SimplePyPiCanonicalize(ETLGroup):
         units.extend([
             self.updator
         ])
-        units.append(
-            LatestTabularize(
-                input_storage=PandasStorage(raw_df),
-                output_storage=PandasStorage(output_fs)
-            )
-        )
         super().__init__(*units)
 
     @property
@@ -98,6 +90,4 @@ class SimplePyPiCanonicalize(ETLGroup):
 
     @property
     def output_ids(self):
-        return ['latest_package',
-                'latest_requirement',
-                'latest_url']
+        return ['latest']

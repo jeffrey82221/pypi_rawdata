@@ -16,8 +16,7 @@ TODO: Setup First Run and Migrade to the Cloud
 - [ ] Build incremental run etl.yml
 """
 from src import SimplePyPiCanonicalize
-# from batch_framework.filesystem import DropboxBackend
-from plugins.new_dropbox_backend import NewDropboxBackend
+from batch_framework.filesystem import DropboxBackend
 from batch_framework.filesystem import LocalBackend
 
 def get_etl_obj(mode='incremental', local=False, test_count=64):
@@ -27,10 +26,9 @@ def get_etl_obj(mode='incremental', local=False, test_count=64):
     if not local:
         assert mode == 'incremental'
         etl_obj = SimplePyPiCanonicalize(
-            tmp_fs=NewDropboxBackend('/data/canon/tmp/'),
-            partition_fs=NewDropboxBackend('/data/canon/partition/'),
-            raw_df=NewDropboxBackend('/data/canon/raw/'),
-            output_fs=NewDropboxBackend('/data/canon/output/'),
+            tmp_fs=DropboxBackend('/data/canon/tmp/'),
+            partition_fs=DropboxBackend('/data/canon/partition/'),
+            raw_df=DropboxBackend('/data/canon/raw/'),
             download_worker_count=1,
             update_worker_count=64,
             do_update=True
@@ -41,7 +39,6 @@ def get_etl_obj(mode='incremental', local=False, test_count=64):
                 tmp_fs=LocalBackend('data/canon/tmp/'),
                 partition_fs=LocalBackend('data/canon/partition/'),
                 raw_df=LocalBackend('data/canon/raw/'),
-                output_fs=NewDropboxBackend('/data/canon/output/'),
                 download_worker_count=8, # FIRST RUN: 64,
                 update_worker_count=8,
                 test_count=test_count,
@@ -52,7 +49,6 @@ def get_etl_obj(mode='incremental', local=False, test_count=64):
                 tmp_fs=LocalBackend('data/canon/tmp/'),
                 partition_fs=LocalBackend('data/canon/partition/'),
                 raw_df=LocalBackend('data/canon/raw/'),
-                output_fs=NewDropboxBackend('/data/canon/output/'),
                 download_worker_count=64, # FIRST RUN: 64,
                 update_worker_count=64,
                 do_update=False
@@ -62,7 +58,6 @@ def get_etl_obj(mode='incremental', local=False, test_count=64):
                 tmp_fs=LocalBackend('data/canon/tmp/'),
                 partition_fs=LocalBackend('data/canon/partition/'),
                 raw_df=LocalBackend('data/canon/raw/'),
-                output_fs=NewDropboxBackend('/data/canon/output/'),
                 download_worker_count=64,
                 update_worker_count=64,
                 do_update=True
@@ -73,7 +68,7 @@ def migrate_data():
     import os
     for folder in ['raw', 'tmp']:
         local_fs = LocalBackend(f'./data/canon/{folder}/')
-        dropbox_fs = NewDropboxBackend(f'/data/canon/{folder}/')
+        dropbox_fs = DropboxBackend(f'/data/canon/{folder}/')
         for file in os.listdir(f'./data/canon/{folder}/'):
             print('folder:', folder, 'file:', file, 'upload started')
             buff = local_fs.download_core(file)
@@ -85,6 +80,6 @@ def migrate_data():
 if __name__ == '__main__':
     # get_etl_obj(mode='debug', local=True).execute()
     # get_etl_obj(mode='first_run', local=True).execute()
-    # get_etl_obj(mode='incremental', local=True).execute()
+    get_etl_obj(mode='incremental', local=True).execute()
     # migrate_data()
-    get_etl_obj(mode='incremental', local=False).execute()
+    # get_etl_obj(mode='incremental', local=False).execute()

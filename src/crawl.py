@@ -15,6 +15,21 @@ from .pip_util import enrich_requires_dist
 
 RETRIES_COUNT = 3
 
+def call_pypi_api(name: str, etag: Optional[str]=None) -> requests.Response:
+    """
+    Get Response from PyPi End Point
+    """
+    url = f"https://pypi.org/pypi/{name}/json"
+    for i in range(RETRIES_COUNT):
+        try:
+            if etag is not None:
+                res = requests.get(url, headers={"If-None-Match": etag})
+            else:
+                res = requests.get(url)
+            return res
+        except requests.exceptions.ConnectionError:
+            print(f'ConnectionError happend on {i}th package download')
+            time.sleep(5)
 
 def process_latest(data: Dict) -> Dict:
     results = dict()
@@ -66,8 +81,7 @@ class LatestDownloader(ObjProcessor):
         results = []
         for i, name in enumerate(
                 tqdm.tqdm(names, desc='get_new_package_records')):
-            url = f"https://pypi.org/pypi/{name}/json"
-            res = self.call_api(url)
+            res = call_pypi_api(name)
             if res.status_code == 404:
                 continue
             assert res.status_code == 200, f'response status code is {res.status_code}'
@@ -77,15 +91,6 @@ class LatestDownloader(ObjProcessor):
             results.append((name, latest, etag))
         return pd.DataFrame.from_records(
             results, columns=['name', 'latest', 'etag'])
-
-    def call_api(self, url):
-        for i in range(RETRIES_COUNT):
-            try:
-                res = requests.get(url)
-                return res
-            except requests.exceptions.ConnectionError:
-                print(f'ConnectionError happend on {i}th package download')
-                time.sleep(5)
 
 
 class LatestUpdator(ObjProcessor):
@@ -207,14 +212,7 @@ class LatestUpdator(ObjProcessor):
                 - str: The etag of the API call
                 (Not None if there is data difference)
         """
-        url = f"https://pypi.org/pypi/{name}/json"
-        for i in range(RETRIES_COUNT):
-            try:
-                res = requests.get(url, headers={"If-None-Match": etag})
-                break
-            except requests.exceptions.ConnectionError:
-                time.sleep(5)
-                print(f'ConnectionError Happened, Sleep and Retry #{i+1}')
+        res = call_pypi_api(name, etag=etag)
         if res.status_code == 404:
             return '404'
         assert res.status_code in [
