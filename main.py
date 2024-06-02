@@ -80,6 +80,6 @@ def migrate_data():
 if __name__ == '__main__':
     # get_etl_obj(mode='debug', local=True).execute()
     # get_etl_obj(mode='first_run', local=True).execute()
-    get_etl_obj(mode='incremental', local=True).execute()
+    # get_etl_obj(mode='incremental', local=True).execute()
     # migrate_data()
-    # get_etl_obj(mode='incremental', local=False).execute()
+    get_etl_obj(mode='incremental', local=False).execute()
