@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: start
-      run: echo <bound method ETL.start of batch_framework-parallize-MapReduce-in-name_trigger_new-out-latest_new>
+      run: echo '<bound method ETL.start of batch_framework-parallize-MapReduce-in-name_trigger_new-out-latest_new>''
   id_1:
     name: <bound method ETL.start of src-main-SimplePyPiCanonicalize-out-latest>
     needs: []
