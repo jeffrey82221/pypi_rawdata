@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: start
-      run: echo <bound method ETL.start of src-main-SimplePyPiCanonicalize-out-latest>
+      run: echo '<bound method ETL.start of src-main-SimplePyPiCanonicalize-out-latest>'
   id_10:
     name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.0
     needs:
@@ -38,7 +38,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_0
-      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_0
+      run: echo 'src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_latest_new_0'
   id_13:
     name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_0
     needs:
@@ -46,7 +46,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_0
-      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_0
+      run: echo 'src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_0'
   id_14:
     name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_full
     needs:
@@ -54,7 +54,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_full
-      run: echo src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_full
+      run: echo 'src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new_name_trigger_new_full'
   id_15:
     name: src-crawl-LatestUpdator-in-latest_new-out-latest
     needs:
@@ -106,7 +106,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: latest
-      run: echo latest
+      run: echo 'latest'
   id_5:
     name: latest_new
     needs:
@@ -114,7 +114,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: latest_new
-      run: echo latest_new
+      run: echo 'latest_new'
   id_6:
     name: name_trigger
     needs:
@@ -122,7 +122,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: name_trigger
-      run: echo name_trigger
+      run: echo 'name_trigger'
   id_7:
     name: name_trigger_new
     needs:
@@ -131,7 +131,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: name_trigger_new
-      run: echo name_trigger_new
+      run: echo 'name_trigger_new'
   id_8:
     name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.AddPartitionKey
     needs:
