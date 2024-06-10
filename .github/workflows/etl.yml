@@ -1,18 +1,20 @@
 jobs:
   id_0:
-    name: <bound method ETL.start of batch_framework-parallize-MapReduce-in-name_trigger_new-out-latest_new>
-    needs: []
+    name: <bound method ETL.end of batch_framework-parallize-MapReduce-in-name_trigger_new-out-latest_new>
+    needs:
+    - id_5
     runs-on: ubuntu-latest
     steps:
-    - name: start
-      run: echo '<bound method ETL.start of batch_framework-parallize-MapReduce-in-name_trigger_new-out-latest_new>'
+    - name: end
+      run: echo '<bound method ETL.end of batch_framework-parallize-MapReduce-in-name_trigger_new-out-latest_new>'
   id_1:
-    name: <bound method ETL.start of src-main-SimplePyPiCanonicalize-out-latest>
-    needs: []
+    name: <bound method ETL.end of src-main-SimplePyPiCanonicalize-out-latest>
+    needs:
+    - id_4
     runs-on: ubuntu-latest
     steps:
-    - name: start
-      run: echo '<bound method ETL.start of src-main-SimplePyPiCanonicalize-out-latest>'
+    - name: end
+      run: echo '<bound method ETL.end of src-main-SimplePyPiCanonicalize-out-latest>'
   id_10:
     name: src-crawl-LatestDownloader-in-name_trigger_new-out-latest_new.MapClass.0
     needs:
@@ -82,23 +84,19 @@ jobs:
       task-id: id_17
       task-name: src-trigger-PyPiNameTrigger-out-name_trigger
   id_2:
-    name: <bound method ETLGroup._end of batch_framework-parallize-MapReduce-in-name_trigger_new-out-latest_new>
-    needs:
-    - id_5
-    secrets: inherit
-    uses: ./.github/workflows/job.yml
-    with:
-      task-id: id_2
-      task-name: <bound method ETLGroup._end of batch_framework-parallize-MapReduce-in-name_trigger_new-out-latest_new>
+    name: <bound method ETL.start of batch_framework-parallize-MapReduce-in-name_trigger_new-out-latest_new>
+    needs: []
+    runs-on: ubuntu-latest
+    steps:
+    - name: start
+      run: echo '<bound method ETL.start of batch_framework-parallize-MapReduce-in-name_trigger_new-out-latest_new>'
   id_3:
-    name: <bound method ETLGroup._end of src-main-SimplePyPiCanonicalize-out-latest>
-    needs:
-    - id_4
-    secrets: inherit
-    uses: ./.github/workflows/job.yml
-    with:
-      task-id: id_3
-      task-name: <bound method ETLGroup._end of src-main-SimplePyPiCanonicalize-out-latest>
+    name: <bound method ETL.start of src-main-SimplePyPiCanonicalize-out-latest>
+    needs: []
+    runs-on: ubuntu-latest
+    steps:
+    - name: start
+      run: echo '<bound method ETL.start of src-main-SimplePyPiCanonicalize-out-latest>'
   id_4:
     name: latest
     needs:
@@ -126,8 +124,8 @@ jobs:
   id_7:
     name: name_trigger_new
     needs:
-    - id_0
     - id_16
+    - id_2
     runs-on: ubuntu-latest
     steps:
     - name: name_trigger_new
