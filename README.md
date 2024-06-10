@@ -49,3 +49,7 @@ from pip._vendor.distlib.util import parse_requirement
 ```
 
 2. [X] Obtain more requirement information including max/min versions, number of release versions, etc.
+
+3. [ ] Using pypi-search package to get github related information (github stars, forks, issues) and project descriptions. (This is a new crawling loop.)
+
+
